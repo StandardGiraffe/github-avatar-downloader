@@ -18,8 +18,13 @@ function getRepoContributors(repoOwner, repoName, callback) {
   });
 }
 
-getRepoContributors("jquery", "jquery", function (err, result) {
+function processResponse(err, result) {
   console.log("Errors:", err);
-  console.log("Results:", result);
-});
+  console.log("Results:\n\n")
+  for (const i of result) {
+    console.log(i.avatar_url);
+  }
 
+}
+
+getRepoContributors("jquery", "jquery", processResponse);
