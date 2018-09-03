@@ -22,7 +22,7 @@ function processResponse(err, result) {
   console.log("Errors:", err);
   console.log("Results:\n\n")
   for (const i of result) {
-    console.log(i.avatar_url);
+    console.log("username: " + i.login + "; avatar URL: " + i.avatar_url);
   }
 
 }
