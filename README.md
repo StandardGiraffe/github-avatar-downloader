@@ -11,6 +11,7 @@ This program should be executed from the command line, in the following manner:
 `node download_avatars.js <owner> <repository name>`
 
 **KNOWN BUG:**  Will throw an error if ./avatars/ does not exist.
+
 **KNOWN BUG:**  Does not distinguish file-type of target avatar.  As a result, if the written file is not formatted as a jpeg, it will not open.
 
 ## Thanks:
