@@ -23,7 +23,8 @@ function processResponse(err, result) {
   console.log("Errors:", err);
   console.log("Results:\n\n")
   for (const i of result) {
-    console.log("username: " + i.login + "; avatar URL: " + i.avatar_url);
+    // console.log("username: " + i.login + "; avatar URL: " + i.avatar_url);
+    downloadImageByURL(i.avatar_url, "./avatars/" + i.login + ".jpg");
   }
 
 }
@@ -31,17 +32,17 @@ function processResponse(err, result) {
 const downloadImageByURL = function (url, destinationPath) {
   request
     .get(url)
-    .on("error", function (err) {
-      console.log(err);
-      throw err;
-    })
+    // .on("error", function (err) {
+    //   console.log(err);
+    //   throw err;
+    // })
     .on("response", function (response) {
-      // console.log ("Downloading?!");
+      console.log (`Downloading file: ${url} ...`);
     })
-    .pipe(fs.createWriteStream(destinationPath) && console.log("Downloaded."));
+    .pipe(fs.createWriteStream(destinationPath)) //&& console.log(`Saved to ${destinationPath}`));
 
 }
 
-// getRepoContributors("jquery", "jquery", processResponse);
+getRepoContributors("jquery", "jquery", processResponse);
 
-downloadImageByURL("https://avatars2.githubusercontent.com/u/2741?v=3&s=466", "avatars/kvirani.jpg");
+// downloadImageByURL("https://avatars2.githubusercontent.com/u/2741?v=3&s=466", "avatars/kvirani.jpg");
