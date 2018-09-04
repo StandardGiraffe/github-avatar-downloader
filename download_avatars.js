@@ -43,6 +43,11 @@ const downloadImageByURL = function (url, destinationPath) {
 
 }
 
-getRepoContributors("jquery", "jquery", processResponse);
+const owner = process.argv[2];
+const name = process.argv[3];
+
+getRepoContributors(owner, name, processResponse);
+
+
 
 // downloadImageByURL("https://avatars2.githubusercontent.com/u/2741?v=3&s=466", "avatars/kvirani.jpg");
