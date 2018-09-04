@@ -5,6 +5,10 @@ const secrets = require("./secrets");
 console.log("Welcome to the GitHub Avatar Downloader!");
 
 function getRepoContributors(repoOwner, repoName, callback) {
+  if (!repoOwner || !repoName) {
+    return console.log(`Expected arguments: <Name of Repository Owner> <Name of Repository>`);
+  }
+
   const options = {
     url: "https://api.github.com/repos/" + repoOwner + "/" + repoName + "/contributors",
     headers: {
