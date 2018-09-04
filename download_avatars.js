@@ -2,9 +2,21 @@ const request = require("request");
 const fs = require("fs");
 const secrets = require("./secrets");
 
+// Takes user input: <Repository Owner> <Repository Name>
+const owner = process.argv[2];
+const name = process.argv[3];
+
+// Executes code from user input.
+getRepoContributors(owner, name, processResponse);
+
+
 console.log("Welcome to the GitHub Avatar Downloader!\n");
 
+// Formats API request with user input.
 function getRepoContributors(repoOwner, repoName, callback) {
+
+  // Ensures user input includes required arguments.
+  // ### TODO: Create checks for incorrect owners and names, not just missing ones.
   if (!repoOwner || !repoName) {
     return console.log(`\nExpected arguments: <Name of Repository Owner> <Name of Repository>\nPlease try again.\n`);
   }
@@ -48,9 +60,4 @@ const downloadImageByURL = function (url, destinationPath) {
 
 }
 
-// Takes user input: <Repository Owner> <Repository Name>
-const owner = process.argv[2];
-const name = process.argv[3];
 
-// Executes code from user input.
-getRepoContributors(owner, name, processResponse);
